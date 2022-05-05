@@ -17,7 +17,14 @@ interface HWPlayer : AbleToPatch, AbleToStorage {
     val player: Player
     val defaultRelativeDirectoryPath: String
 
+    /**
+     * ### yaml key 형식을 사용하므로 admin 과 admin.b 같은 겹친 표현은 사용 불가
+     */
     fun <T: Any> getStatus(key: String) : T
+
+    /**
+     * ### yaml key 형식을 사용하므로 admin 과 admin.b 같은 겹친 표현은 사용 불가
+     */
     fun <T: Any> setStatus(key: String, value: T)
 }
 

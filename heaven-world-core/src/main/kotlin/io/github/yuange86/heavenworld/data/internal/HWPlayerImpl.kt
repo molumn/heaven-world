@@ -33,13 +33,9 @@ class HWPlayerImpl(
         if(yamlFile.parent != File(defaultRelativeDirectoryPath).parent)
             HWPlugin.instance.logger.warning("HWPlayer[name: ${player.name}] has unique Directory Path!")
         yamlFile.let { YamlConfiguration.loadConfiguration(yamlFile) }
-            .getConfigurationSection("user")?.getMapList("status")?.run {
-                this[0]?.let {
-                    status.clear()
-                    it.forEach { (key, value) ->
-                        status[key.toString()] = value ?: "null"
-                    }
-                }
+            .getConfigurationSection("user.status")?.run {
+                status.clear()
+                status.putAll(getValues(true))
             } ?: HWPlugin.instance.logger.info("new Player[name: ${player.name}]")
     }
 
