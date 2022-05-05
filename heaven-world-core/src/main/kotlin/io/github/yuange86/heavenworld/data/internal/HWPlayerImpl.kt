@@ -30,7 +30,7 @@ class HWPlayerImpl(
     }
 
     override fun patch(yamlFile: File) {
-        if(yamlFile.parent != defaultRelativeDirectoryPath)
+        if(yamlFile.parent != File(defaultRelativeDirectoryPath).parent)
             HWPlugin.instance.logger.warning("HWPlayer[name: ${player.name}] has unique Directory Path!")
         yamlFile.let { YamlConfiguration.loadConfiguration(yamlFile) }
             .getConfigurationSection("user")?.getMapList("status")?.run {
