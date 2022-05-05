@@ -23,7 +23,7 @@ publishing {
 
 
                 //new credential processing to keep private
-                val credentialFile = File("private.txt")
+                val credentialFile = File("private.properties")
 
                 val nexusUsername = credentialFile.readLines()[0]
                 val nexusPassword = credentialFile.readLines()[1]

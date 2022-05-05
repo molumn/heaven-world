@@ -1,4 +1,4 @@
-package io.github.yuange86.heavenworld.internal.system
+package io.github.yuange86.heavenworld.system.internal
 
 import io.github.yuange86.heavenworld.system.HWPlayerSystem
 

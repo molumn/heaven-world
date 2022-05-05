@@ -1,7 +1,8 @@
-package io.github.yuange86.heavenworld.internal.data
+package io.github.yuange86.heavenworld.data.internal
 
 import io.github.yuange86.heavenworld.data.HWPlayer
 import io.github.yuange86.heavenworld.objectives.RelativeDirectories
+import io.github.yuange86.heavenworld.plugin.HWPlugin
 
 import org.bukkit.configuration.file.YamlConfiguration
 import org.bukkit.entity.Player
@@ -11,13 +12,13 @@ import java.io.File
 /**
  * @author yuange86
  * @since 0.1.0
- * todo("not tested")
+ * tested: 0.2.0
  */
 @Suppress("unused")
 class HWPlayerImpl(
     override val player: Player,
     patch: Boolean = false,
-    private val defaultRelativeDirectoryPath: String = RelativeDirectories.PLAYER_DIR
+    override val defaultRelativeDirectoryPath: String = RelativeDirectories.PLAYER_DIR
 ) : HWPlayer {
 
     private var status: HashMap<String, Any> = HashMap()
@@ -29,22 +30,26 @@ class HWPlayerImpl(
     }
 
     override fun patch(yamlFile: File) {
+        if(yamlFile.parent != defaultRelativeDirectoryPath)
+            HWPlugin.instance.logger.warning("HWPlayer[name: ${player.name}] has unique Directory Path!")
         yamlFile.let { YamlConfiguration.loadConfiguration(yamlFile) }
-            .getConfigurationSection("user.status")?.run {
-                getKeys(true).forEach {
-                    get(it)?.let { value ->
-                        status[it] = value
+            .getConfigurationSection("user")?.getMapList("status")?.run {
+                this[0]?.let {
+                    status.clear()
+                    it.forEach { (key, value) ->
+                        status[key.toString()] = value ?: "null"
                     }
                 }
-            } ?: throw NoSuchElementException("no such player's data or there is no stored data for the player")
+            } ?: HWPlugin.instance.logger.info("new Player[name: ${player.name}]")
     }
 
     override fun storage(yamlFile: File) {
+        yamlFile.createNewFile()
         yamlFile.let { YamlConfiguration.loadConfiguration(yamlFile) }
             .let {
                 it.createSection("player").run {
-                    set("name", player.displayName())
-                    set("uuid", player.uniqueId)
+                    set("name", player.name)
+                    set("uuid", player.uniqueId.toString())
                     createSection("status", status)
                 }
                 it.save(yamlFile)
