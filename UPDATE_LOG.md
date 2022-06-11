@@ -10,5 +10,6 @@
 
 ### 0.2.0
 
+- 개발환경 변경 (Windows -> Ubuntu)
 - HWPlayerManager: HWPlayer 집합체 (관리 기능 추가)
 - HWPlayer 의 traits(AbleToPatch, AbleToStorage) test 완료 (추후 추가 기능 구현 예정)

@@ -19,7 +19,7 @@ class HeavenWorldPlugin: HWPlugin(), Listener {
 
         server.pluginManager.registerEvents(this, this)
 
-        hwPlayerManager.patchAll()
+        hwPlayerManager.patchAll()  // todo: multi-thread?
     }
 
     @EventHandler

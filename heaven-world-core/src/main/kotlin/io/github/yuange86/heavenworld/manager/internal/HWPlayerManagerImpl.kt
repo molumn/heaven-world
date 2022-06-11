@@ -15,9 +15,9 @@ import kotlin.collections.HashMap
 
 
 /**
+ * tested: 0.2.0
  * @author yuange86
  * @since 0.2.0
- * tested: 0.2.0
  */
 @Suppress("unused")
 class HWPlayerManagerImpl : HWPlayerManager {

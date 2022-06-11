@@ -10,9 +10,9 @@ import org.bukkit.entity.Player
 import java.io.File
 
 /**
+ * tested: 0.2.0
  * @author yuange86
  * @since 0.1.0
- * tested: 0.2.0
  */
 @Suppress("unused")
 class HWPlayerImpl(

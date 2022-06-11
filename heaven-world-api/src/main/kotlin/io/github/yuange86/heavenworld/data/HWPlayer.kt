@@ -8,10 +8,10 @@ import org.bukkit.entity.Player
 import kotlin.reflect.KProperty
 
 /**
- * @author yuange86
- * @since 0.1.0
  * implementation : yes
  * tested: 0.2.0
+ * @author yuange86
+ * @since 0.1.0
  */
 interface HWPlayer : AbleToPatch, AbleToStorage {
     val player: Player

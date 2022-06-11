@@ -4,10 +4,10 @@ import io.github.yuange86.heavenworld.plugin.HWPlugin
 import java.io.File
 
 /**
- * @author yuange86
- * @since 0.1.0
  * storage directories
  * tested: 0.2.0
+ * @author yuange86
+ * @since 0.1.0
  */
 object RelativeDirectories {
     val DATA_FOLDER: String = HWPlugin.instance.dataFolder.absolutePath

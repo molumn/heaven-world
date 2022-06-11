@@ -6,10 +6,10 @@ import io.github.yuange86.heavenworld.data.HWPlayer
 import org.bukkit.entity.Player
 
 /**
- * @author yuange86
- * @since 0.2.0
  * implementation: yes
  * tested: 0.2.0
+ * @author yuange86
+ * @since 0.2.0
  */
 interface HWPlayerManager {
 

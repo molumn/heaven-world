@@ -1,3 +1,6 @@
+//new credential processing to keep private
+val credentialFile = File(projectDir.parentFile, "private.properties")
+
 plugins {
     `maven-publish`
     signing
@@ -20,10 +23,6 @@ publishing {
 //                val nexusPassword: String by project
 //                username = nexusUsername
 //                password = nexusPassword
-
-
-                //new credential processing to keep private
-                val credentialFile = File("private.properties")
 
                 val nexusUsername = credentialFile.readLines()[0]
                 val nexusPassword = credentialFile.readLines()[1]
