@@ -1,7 +1,6 @@
 package io.github.yuange86.heavenworld.plugin
 
 import io.github.yuange86.heavenworld.objectives.RelativeDirectories
-
 import org.bukkit.plugin.java.JavaPlugin
 
 abstract class HWPlugin : JavaPlugin() {
